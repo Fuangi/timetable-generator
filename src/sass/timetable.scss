@@ -1,0 +1,79 @@
+@use "./variables" as *;
+
+// THE TIMETABLE CARD - on the dashboard page
+.timetable-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: $color-white;
+  border-radius: 1rem;
+
+  & .head {
+    padding: 1.2rem;
+    border-bottom: 1px solid #f1f1f1;
+
+    & h3 {
+      font-size: 1.4rem;
+      margin: 0.3rem 0;
+      font-weight: 500;
+    }
+
+    & p {
+      font-size: 1.3rem;
+      color: $color-primary;
+      font-weight: 500;
+    }
+  }
+
+  & .body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-bottom: 1px solid #f1f1f1;
+
+    & p {
+      font-size: 1.3rem;
+    }
+  }
+
+  & .progress {
+    padding: 1rem;
+
+    & p {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// THE TIMETABLE SLOT - on dashboard page
+.timetable-slot {
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-white;
+  padding: 1rem 2rem;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 0.5rem;
+  width: 21rem;
+
+  & span {
+    &:first-of-type {
+      height: 1rem;
+      width: 1rem;
+      background-color: $color-secondary;
+      border-radius: 50%;
+    }
+
+    &:last-of-type {
+      margin-left: 7rem;
+      font-size: 1.7rem;
+    }
+  }
+
+  & p {
+    color: $color-primary;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}
