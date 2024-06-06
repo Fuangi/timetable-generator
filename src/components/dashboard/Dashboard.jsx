@@ -2,6 +2,7 @@ import { pictures } from "../../assets";
 import TimetableCard from "../timetable/TimetableCard";
 import TimetableSlot from "../timetable/TimetableSlot";
 import DashLayout from "./DashLayout";
+import MyCalendar from "./MyCalendar";
 
 function Dashboard() {
   return (
@@ -32,7 +33,7 @@ function Dashboard() {
           </div>
           <div className="right-side">
             <div className="calendar">
-              <h2>My Calendar here</h2>
+              <MyCalendar />
             </div>
             <div className="upcoming">
               <h2>Upcoming Timetable Slots</h2>
