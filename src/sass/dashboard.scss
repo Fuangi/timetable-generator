@@ -1,14 +1,19 @@
 @use "./variables" as *;
 
-.dashboard {
+// THE DASHBOARD LAYOUT
+
+.dash-layout {
   display: flex;
-  gap: 2rem;
   height: 100vh;
 
+  & .dashbody {
+    width: 90%;
+  }
+}
+.dashboard {
   &-body {
     display: flex;
     justify-content: space-between;
-    width: 90%;
     margin-top: 1rem;
     margin-right: 1rem;
 
@@ -155,6 +160,7 @@
       text-decoration: none;
       display: block;
       font-size: 1.5rem;
+      margin-right: 0.8rem;
     }
 
     & .active {
