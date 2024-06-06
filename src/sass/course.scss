@@ -1,0 +1,96 @@
+@use "./variables" as *;
+
+// THE COURSE HEADER
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid $color-grey;
+  padding-bottom: 0.9rem;
+
+  & h2 {
+    font-weight: 500;
+    font-size: 2rem;
+  }
+
+  &-actions {
+    display: flex;
+    gap: 2rem;
+
+    & button {
+      border: none;
+      outline: none;
+      background-color: $color-primary;
+      color: $color-white;
+      padding: 0.7rem;
+      border-radius: 0.5rem;
+      width: 9rem;
+      font-size: 1.3rem;
+    }
+
+    & input,
+    & select {
+      outline: none;
+      border: 1px solid $color-grey;
+      padding: 0.5rem;
+    }
+  }
+}
+
+// THE COURSE BODY
+.course {
+  margin-top: 1rem;
+  padding: 1rem;
+  padding-left: 3rem;
+}
+
+// COURSE TABLE
+.course-table {
+  width: 95%;
+  margin: auto;
+  margin-top: 2rem;
+  border-collapse: collapse;
+
+  & tr {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: 1px solid $color-grey;
+
+    & td,
+    & th {
+      padding: 0.9rem;
+      min-width: 5rem;
+
+      &:not(:first-of-type) {
+        border-left: 1px solid $color-grey;
+      }
+
+      & button {
+        background: none;
+        outline: none;
+        border: none;
+        margin: 0 1rem;
+        font-size: 1.7rem;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+      }
+
+      & .update {
+        color: $color-green;
+      }
+      & .delete {
+        color: $color-red;
+      }
+    }
+  }
+
+  & tbody {
+    & tr {
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
+  }
+}
