@@ -1,5 +1,6 @@
+import { Outlet } from "react-router-dom";
 import CourseHeader from "../components/course/CourseHeader";
-import CourseTable from "../components/course/CourseTable";
+// import CourseTable from "../components/course/CourseTable";
 import DashLayout from "../components/dashboard/DashLayout";
 
 function Course() {
@@ -9,7 +10,7 @@ function Course() {
         <CourseHeader />
 
         <div className="course-body">
-          <CourseTable />
+          <Outlet />
         </div>
       </div>
     </DashLayout>
