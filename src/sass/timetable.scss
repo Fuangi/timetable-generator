@@ -1,12 +1,17 @@
 @use "./variables" as *;
 
 // THE TIMETABLE CARD - on the dashboard page
+.card-link {
+  text-decoration: none;
+  color: $color-black;
+}
 .timetable-card {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   background-color: $color-white;
   border-radius: 1rem;
+  border: 1px solid $color-grey;
 
   & .head {
     padding: 1.2rem;
@@ -76,4 +81,29 @@
     font-size: 1.3rem;
     font-weight: 500;
   }
+}
+
+// THE TIMETABLE PAGE AND RELATED CONTENTS
+
+// ALL THE TIMETABLES SHOWING ON THE PAGE
+.all-timetables {
+  margin: 1.5rem 3rem;
+
+  & h3 {
+    font-size: 1.8rem;
+  }
+
+  &-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+}
+
+// THE SINGLE TIMETABLE VIEW PAGE
+.timetable-calendar {
+  height: 87dvh;
+  margin: 1.5rem 2rem;
+  margin-left: 3rem;
 }
