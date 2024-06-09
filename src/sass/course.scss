@@ -1,43 +1,5 @@
 @use "./variables" as *;
 
-// THE COURSE HEADER
-.course-header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid $color-grey;
-  padding-bottom: 0.9rem;
-
-  & h2 {
-    font-weight: 500;
-    font-size: 2rem;
-  }
-
-  &-actions {
-    display: flex;
-    gap: 2rem;
-
-    & button,
-    & a {
-      border: none;
-      outline: none;
-      background-color: $color-secondary;
-      color: $color-black;
-      padding: 0.7rem;
-      border-radius: 0.5rem;
-      width: 9rem;
-      font-size: 1.3rem;
-      text-decoration: none;
-    }
-
-    & input,
-    & select {
-      outline: none;
-      border: 1px solid $color-grey;
-      padding: 0.5rem;
-    }
-  }
-}
-
 // THE COURSE BODY
 .course {
   margin-top: 1rem;
@@ -129,7 +91,7 @@
       border: 1px solid $color-grey;
       outline: none;
       height: 3rem;
-      width: 30rem;
+      width: 40rem;
       padding-left: 0.5rem;
     }
 

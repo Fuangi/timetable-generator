@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
-import CourseHeader from "../components/course/CourseHeader";
 // import CourseTable from "../components/course/CourseTable";
 import DashLayout from "../components/dashboard/DashLayout";
+import PageHeader from "../components/utils/PageHeader";
 
 function Course() {
   return (
     <DashLayout>
       <div className="course">
-        <CourseHeader />
+        <PageHeader
+          pageName="Courses"
+          sortBy={["name", "level", "specialty", "semester"]}
+        />
 
         <div className="course-body">
           <Outlet />
