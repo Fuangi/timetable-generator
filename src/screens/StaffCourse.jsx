@@ -1,5 +1,7 @@
+import DashLayout from "../components/dashboard/DashLayout";
+
 function StaffCourse() {
-  return <div></div>;
+  return <DashLayout>Assign Courses</DashLayout>;
 }
 
 export default StaffCourse;
