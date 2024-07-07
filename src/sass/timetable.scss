@@ -90,3 +90,14 @@
   margin: 1.5rem 2rem;
   margin-left: 3rem;
 }
+
+// THE TIMETABLE CREATE FROM
+.create-timetable {
+  border: 1px solid black;
+  display: flex;
+  height: 87dvh;
+  align-items: center;
+  /* background: linear-gradient(rgba(255, 0, 0, 0.323), rgba(0, 0, 255, 0.343)),
+    url("../../public/timetable.png") repeat;
+  background-size: contain; */
+}

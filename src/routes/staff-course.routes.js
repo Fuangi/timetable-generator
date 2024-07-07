@@ -6,9 +6,10 @@ import ViewStaffCourse from "../components/staff-courses/ViewStaffCourse";
 function StaffCourseRouter() {
   return (
     <Routes>
-      <Route path="/staff-course" element={<StaffCourse />} />
-      <Route path="assign" element={<AssignCourse />} />
-      <Route path="/view" element={<ViewStaffCourse />} />
+      <Route path="/staff-course" element={<StaffCourse />}>
+        <Route path="view" element={<ViewStaffCourse />} />
+        <Route path="assign" element={<AssignCourse />} />
+      </Route>
     </Routes>
   );
 }

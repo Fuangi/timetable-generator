@@ -15,7 +15,7 @@ function DashSideNav() {
           <NavLink to="/staff">Staff</NavLink>
         </li>
         <li>
-          <NavLink to="/staff-course">Assign Courses</NavLink>
+          <NavLink to="/staff-course">Staff Courses</NavLink>
         </li>
         <li>
           <NavLink to="/timetable">Timetable</NavLink>
