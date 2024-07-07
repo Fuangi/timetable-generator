@@ -53,31 +53,14 @@
 
 // THE TIMETABLE SLOT - on dashboard page
 .timetable-slot {
-  display: flex;
-  justify-content: space-between;
-  background-color: $color-white;
-  padding: 1rem 2rem;
-  align-items: center;
-  gap: 1.5rem;
-  border-radius: 0.5rem;
-  width: 21rem;
-
-  & span {
-    &:first-of-type {
-      height: 1rem;
-      width: 1rem;
-      background-color: $color-secondary;
-      border-radius: 50%;
-    }
-
-    &:last-of-type {
-      margin-left: 7rem;
-      font-size: 1.7rem;
-    }
+  & h3 {
+    color: black;
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
   }
 
   & p {
-    color: $color-primary;
+    color: $color-white;
     font-size: 1.3rem;
     font-weight: 500;
   }

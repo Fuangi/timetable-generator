@@ -10,6 +10,7 @@ function Course() {
         <PageHeader
           pageName="Courses"
           sortBy={["name", "level", "specialty", "semester"]}
+          url="/course/new"
         />
 
         <div className="course-body">

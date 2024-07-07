@@ -1,0 +1,39 @@
+@use "./variables" as *;
+
+.rbc-events-container {
+  margin-right: 0 !important;
+
+  & .rbc-event {
+    border: 1px solid $color-secondary;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-primary;
+  }
+
+  & .rbc-event-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  & .rbc-event-content {
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+.rbc-timeslot-group {
+  min-height: 6rem;
+}
+
+// The header with days
+.rbc-header {
+  padding: 0.5rem;
+}
+
+.blockout {
+  background-color: #1094f2;
+  font-size: 18px;
+  text-align: center;
+  display: block;
+  height: 100%;
+}

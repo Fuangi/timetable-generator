@@ -1,13 +1,9 @@
-function TimetableSlot() {
+function TimetableSlot(course) {
   return (
     <div className="timetable-slot">
-      <span></span>
-      <div>
-        <h3>Course Title</h3>
-        <p>course time</p>
-      </div>
-
-      <span> {">"}</span>
+      <h3>{course?.course?.title}</h3>
+      <p>{course?.course?.event?.data?.type}</p>
+      {/* The above is for the teacher name */}
     </div>
   );
 }

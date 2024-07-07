@@ -9,6 +9,7 @@ function Staff() {
         <PageHeader
           pageName="Staffs"
           sortBy={["first", "last", "email", "address"]}
+          url="/staff/new"
         />
 
         <div className="course-body">
