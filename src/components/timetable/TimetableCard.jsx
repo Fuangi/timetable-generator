@@ -6,7 +6,7 @@ function TimetableCard() {
       <div className="timetable-card">
         <div className="head">
           <h3>Timetable title</h3>
-          <p>level</p>
+          <p>level, specialty</p>
         </div>
         <div className="body">
           <p> 🏠 10 courses</p>

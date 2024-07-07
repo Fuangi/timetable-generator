@@ -9,6 +9,7 @@ function Timetable() {
         <PageHeader
           pageName="Timetables"
           sortBy={["level", "specialty", "period"]}
+          url="/timetable/new"
         />
       </div>
       <div className="course-body">

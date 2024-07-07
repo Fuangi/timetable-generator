@@ -45,7 +45,9 @@ function CourseForm() {
             name="specialty"
             id="specialty"
             value={specialty}
-            onChange={(e) => setSpecialty(e.target.value)}
+            onChange={(e) =>
+              setSpecialty((prevSpe) => [...prevSpe, e.target.value])
+            }
           >
             <option value="GWD">GWD</option>
             <option value="ITS">ITS</option>
@@ -59,7 +61,9 @@ function CourseForm() {
             name="program"
             id="program"
             value={program}
-            onChange={(e) => setProgram(e.target.value)}
+            onChange={(e) =>
+              setProgram((prevProgs) => [...prevProgs, e.target.value])
+            }
           >
             {/* <option value="">Seclect Specialty</option> */}
             <option value="GWD">GWD</option>
