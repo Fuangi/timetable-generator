@@ -68,12 +68,7 @@ function StaffForm() {
       data: staff,
     })
       .then((res) => {
-        if (res.statusText === "ok") {
-          timeout("success");
-        } else {
-          console.log(res.message);
-          timeout("error");
-        }
+        timeout("success");
       })
       .catch((err) => {
         timeout("error");
