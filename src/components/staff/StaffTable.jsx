@@ -38,7 +38,7 @@ function StaffTable() {
           ))
         ) : (
           <tr>
-            <td>No staffs found, please try again later</td>
+            <td colSpan={8}>No staffs found, please try again later</td>
           </tr>
         )}
       </tbody>
