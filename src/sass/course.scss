@@ -59,83 +59,68 @@
   }
 }
 
-// COURSE FORM
-.course-form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-left: 3rem;
-  padding: 1rem;
-  width: 40%;
-  border: 1px solid $color-grey;
-
-  & h2 {
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: center;
-  }
-
-  &-input {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    gap: 1rem;
-
-    & label {
-      width: 8rem;
-      font-size: 1.5rem;
-    }
-
-    & input,
-    & select {
-      border: 1px solid $color-grey;
-      outline: none;
-      height: 3rem;
-      width: 40rem;
-      padding-left: 0.5rem;
-    }
-
-    & select {
-      height: 5rem;
-    }
-  }
-  & button {
-    background: $color-secondary;
-    outline: none;
-    border: none;
-    margin: 0 1rem;
-    font-size: 1.5rem;
-    width: 10rem;
-    justify-self: center;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin: auto;
-  }
-}
-
 // The instructions on the course form
 .form {
   display: flex;
-  justify-content: space-between;
+  height: 85dvh;
+  justify-content: center;
+  align-items: center;
   margin-top: 2rem;
 
-  & .form-instruction {
-    width: 45%;
+  // COURSE FORM
+  & .course-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 3rem;
     padding: 1rem;
+    width: 50%;
+    border: 1px solid $color-grey;
 
     & h2 {
       font-size: 2rem;
       font-weight: 500;
-      margin-bottom: 0.7rem;
+      text-align: center;
     }
 
-    & ol {
-      padding: 1rem;
+    &-input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      gap: 1rem;
 
-      & li {
+      & label {
+        width: 12rem;
         font-size: 1.5rem;
-        margin: 1rem 0;
       }
+
+      & input,
+      & select {
+        border: 1px solid $color-grey;
+        outline: none;
+        height: 4rem;
+        width: 40rem;
+        padding-left: 0.5rem;
+      }
+
+      & select {
+        height: 5rem;
+      }
+    }
+    & button {
+      background: $color-secondary;
+      outline: none;
+      border: none;
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      width: 15rem;
+      justify-self: center;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: auto;
     }
   }
 }

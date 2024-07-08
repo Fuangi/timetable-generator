@@ -14,7 +14,7 @@ function CourseForm() {
   // States for exising course - update
   const [searchParams] = useSearchParams();
   const courseToUpdateId = searchParams.get("id");
-  const [isEditing, setIsEditing] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   const [currentCourse, setCurrentCourse] = useState({});
 
   useEffect(
@@ -145,7 +145,6 @@ function CourseForm() {
           <label htmlFor="title"> Specialties</label>
           <select
             multiple={true}
-            size={1}
             name="specialties"
             required={true}
             ref={courseSpecialties}
@@ -175,7 +174,7 @@ function CourseForm() {
           />
         </div>
         <div className="course-form-input">
-          <label htmlFor="weekly-hours">Weekly Hourse</label>
+          <label htmlFor="weekly-hours">Weekly Hours</label>
           <input
             type="number"
             required={true}
@@ -192,15 +191,6 @@ function CourseForm() {
           <button onClick={handleCreateCourse}>Create Course</button>
         )}
       </form>
-      <div className="form-instruction">
-        <h2>Instructions on filling the form</h2>
-        <ol>
-          <li>
-            For the course specialty, input the specialty code - SWE, GWD, etc.{" "}
-          </li>
-          <li>The course specialties should be separated by commas </li>
-        </ol>
-      </div>
     </div>
   );
 }
