@@ -1,4 +1,4 @@
-import TableRow from "../utils/TableRow";
+// import TableRow from "../utils/TableRow";
 
 function StaffTable() {
   return (
@@ -14,25 +14,7 @@ function StaffTable() {
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-        <TableRow />
-      </tbody>
+      <tbody></tbody>
     </table>
   );
 }

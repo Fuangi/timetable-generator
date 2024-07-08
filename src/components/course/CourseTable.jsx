@@ -28,9 +28,15 @@ function CourseTable() {
         </tr>
       </thead>
       <tbody>
-        {courses?.map((course, i) => (
-          <TableRow key={i} index={i} data={course} />
-        ))}
+        {courses.length > 0 ? (
+          courses?.map((course, i) => (
+            <TableRow key={i} index={i} data={course} />
+          ))
+        ) : (
+          <tr>
+            <td colSpan={7}>No Courses found in the database!</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
