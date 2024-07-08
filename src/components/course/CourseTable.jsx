@@ -1,4 +1,4 @@
-import { MdDelete, MdEdit } from "react-icons/md";
+import TableRow from "../utils/TableRow";
 
 function CourseTable() {
   return (
@@ -15,22 +15,11 @@ function CourseTable() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Vanessa</td>
-          <td>Fuangi</td>
-          <td>try@gmail.com</td>
-          <td>123435676</td>
-          <td>Buea</td>
-          <td>
-            <button className="delete">
-              <MdDelete />
-            </button>
-            <button className="update">
-              <MdEdit />
-            </button>
-          </td>
-        </tr>
+        <TableRow />
+        <TableRow />
+        <TableRow />
+        <TableRow />
+        <TableRow />
       </tbody>
     </table>
   );
