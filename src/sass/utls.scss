@@ -39,3 +39,10 @@
     }
   }
 }
+
+// Media query to remove some things on download
+@media print {
+  .onDownload {
+    display: none;
+  }
+}

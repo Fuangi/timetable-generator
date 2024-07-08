@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function DashSideNav() {
   return (
-    <div className="dash-sidenav">
+    <div className="dash-sidenav onDownload">
       <h2>Timetabler</h2>
       <ul>
         <li>

@@ -1,16 +1,31 @@
 import { useState } from "react";
+import axios from "axios";
 
 function CourseForm() {
-  const [title, setTitle] = useState("");
-  const [level, setLevel] = useState("");
-  const [specialty, setSpecialty] = useState([]);
-  const [program, setProgram] = useState([]);
-  const [semester, setSemester] = useState("");
-  const [hours, setHours] = useState("");
+  const [name, setName] = useState("");
+  const [code, setCode] = useState("");
+  const [specialties, setSpecialties] = useState([]);
+  const [totalHours, setTotalHours] = useState("");
+  const [hoursWeekly, setHoursWeekly] = useState("");
 
   function handleCreateCourse(e) {
     e.preventDefault();
-    console.log("Submitted!");
+
+    const course = {
+      name,
+      course_code: code,
+      specialties,
+      total_hours: totalHours,
+      hours_weekly: hoursWeekly,
+    };
+
+    axios({
+      url: "http://localhost:4000/timetable-ai/course",
+      method: "POST",
+      data: course,
+    })
+      .then((res) => console.log("Successful", res))
+      .catch((err) => console.log("Failed to create", err));
   }
 
   return (
@@ -18,35 +33,38 @@ function CourseForm() {
       <form className="course-form" onSubmit={handleCreateCourse}>
         <h2>Create Course</h2>
         <div className="course-form-input">
-          <label htmlFor="title"> Title</label>
+          <label htmlFor="name"> Course Name</label>
           <input
             type="text"
-            name="title"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            name="name"
+            id="name"
+            required={true}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="course-form-input">
-          <label htmlFor="title">Levels</label>
+          <label htmlFor="name"> Course Code</label>
           <input
             type="text"
-            name="level"
-            id="level"
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
+            name="code"
+            id="code"
+            required={true}
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
           />
         </div>
         <div className="course-form-input">
-          <label htmlFor="title"> Specialty</label>
+          <label htmlFor="title"> Specialties</label>
           <select
             multiple={true}
             size={1}
-            name="specialty"
-            id="specialty"
-            value={specialty}
+            name="specialties"
+            required={true}
+            id="specialties"
+            value={specialties}
             onChange={(e) =>
-              setSpecialty((prevSpe) => [...prevSpe, e.target.value])
+              setSpecialties((prevSpe) => [...prevSpe, e.target.value])
             }
           >
             <option value="GWD">GWD</option>
@@ -55,43 +73,28 @@ function CourseForm() {
           </select>
         </div>
         <div className="course-form-input">
-          <label htmlFor="title"> Program</label>
-          <select
-            multiple={true}
-            name="program"
-            id="program"
-            value={program}
-            onChange={(e) =>
-              setProgram((prevProgs) => [...prevProgs, e.target.value])
-            }
-          >
-            {/* <option value="">Seclect Specialty</option> */}
-            <option value="GWD">GWD</option>
-            <option value="ITS">ITS</option>
-            <option value="SWE">SWE</option>
-          </select>
-        </div>
-        <div className="course-form-input">
-          <label htmlFor="title">Semester</label>
+          <label htmlFor="title">Total Hours</label>
           <input
-            type="text"
-            name="semester"
-            id="semester"
-            value={semester}
-            onChange={(e) => setSemester(e.target.value)}
+            type="number"
+            name="total-hours"
+            required={true}
+            id="total-hours"
+            value={totalHours}
+            onChange={(e) => setTotalHours(e.target.value)}
           />
         </div>
         <div className="course-form-input">
-          <label htmlFor="title">Hours</label>
+          <label htmlFor="weekly-hours">Weekly Hourse</label>
           <input
-            type="text"
-            name="hours"
-            id="hours"
-            value={hours}
-            onChange={(e) => setHours(e.target.value)}
+            type="number"
+            required={true}
+            name="weekly-hours"
+            id="weekly-hours"
+            value={hoursWeekly}
+            onChange={(e) => setHoursWeekly(e.target.value)}
           />
         </div>
-        <button>Create</button>
+        <button>Create Course</button>
       </form>
       <div className="form-instruction">
         <h2>Instructions on filling the form</h2>

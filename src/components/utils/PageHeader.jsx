@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 
 function PageHeader({ pageName, sortBy, url }) {
+  function handleDownload() {
+    window.print();
+  }
   return (
-    <div className="page-header">
+    <div className="page-header onDownload">
       <h2>Your {pageName}</h2>
       <div className="page-header-actions">
         <input type="search" placeholder="Search" />
@@ -15,7 +18,7 @@ function PageHeader({ pageName, sortBy, url }) {
           ))}
         </select>
         <Link to={url}>New</Link>
-        <button>Download</button>
+        <button onClick={handleDownload}>Download</button>
       </div>
     </div>
   );
