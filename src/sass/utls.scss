@@ -40,6 +40,17 @@
   }
 }
 
+// Table row specialties
+.specialty {
+  margin-left: 0.4rem;
+
+  &:not(:last-of-type) {
+    &::after {
+      content: ",";
+    }
+  }
+}
+
 // Media query to remove some things on download
 @media print {
   .onDownload {
