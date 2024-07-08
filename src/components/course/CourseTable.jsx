@@ -7,7 +7,8 @@ function CourseTable() {
 
   useEffect(function () {
     axios({
-      url: "http://localhost:4000/timetable-ai/course",
+      // url: "http://localhost:4000/timetable-ai/course",
+      url: `https://timetable-generator-backend.onrender.com/timetable-ai/course`,
       method: "GET",
     })
       .then((res) => setCourses(res.data))

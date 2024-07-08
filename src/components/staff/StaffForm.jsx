@@ -62,7 +62,8 @@ function StaffForm() {
     };
 
     axios({
-      url: "http://localhost:4000/timetable-ai/staff",
+      // url: "http://localhost:4000/timetable-ai/staff",
+      url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/`,
       method: "POST",
       data: staff,
     })
@@ -92,7 +93,8 @@ function StaffForm() {
     };
 
     axios({
-      url: `http://localhost:4000/timetable-ai/staff/${staffToUpdateId}`,
+      // url: `http://localhost:4000/timetable-ai/staff/${staffToUpdateId}`,
+      url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${staffToUpdateId}`,
       method: "PATCH",
       data: staff,
     })

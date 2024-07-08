@@ -67,7 +67,8 @@ function CourseForm() {
     };
 
     axios({
-      url: "http://localhost:4000/timetable-ai/course",
+      // url: "http://localhost:4000/timetable-ai/course",
+      url: `https://timetable-generator-backend.onrender.com/timetable-ai/course`,
       method: "POST",
       data: course,
     })
@@ -95,7 +96,8 @@ function CourseForm() {
     };
 
     axios({
-      url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
+      // url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
+      url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${courseToUpdateId}`,
       method: "PATCH",
       data: course,
     })

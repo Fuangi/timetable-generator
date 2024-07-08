@@ -14,7 +14,8 @@ function StaffTableRow(data, index) {
     if (window.confirm("Are you sure you want to delete this resource?")) {
       // deletion logic
       axios({
-        url: `http://localhost:4000/timetable-ai/staff/${id}`,
+        // url: `http://localhost:4000/timetable-ai/staff/${id}`,
+        url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${id}`,
         method: "DELETE",
       })
         .then((res) => {

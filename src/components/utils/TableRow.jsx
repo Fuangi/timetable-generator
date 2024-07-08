@@ -14,7 +14,8 @@ function TableRow(data) {
     if (window.confirm("Are you sure you want to delete this resource?")) {
       // deletion logic
       axios({
-        url: `http://localhost:4000/timetable-ai/course/${id}`,
+        // url: `http://localhost:4000/timetable-ai/course/${id}`,
+        url: `https://timetable-generator-backend.onrender.com/timetable-ai/course/${id}`,
         method: "DELETE",
       })
         .then((res) => {
