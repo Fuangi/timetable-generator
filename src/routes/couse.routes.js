@@ -10,9 +10,9 @@ function CourseRouter() {
         <Route index element={<CourseTable />} />
         {/* <Route path="view" element={<CourseTable />} /> */}
         <Route path="new" element={<CourseForm />} />
-        <Route path="view/:id" element={<p>View Course</p>} />
-        <Route path="update/:id" element={<p>Update Course</p>} />
-        <Route path="delete/:id" element={<p>Delete Course</p>} />
+        <Route path="view" element={<p>View Course</p>} />
+        <Route path="update" element={<CourseForm />} />
+        <Route path="delete" element={<p>Delete Course</p>} />
       </Route>
     </Routes>
   );

@@ -1,7 +1,11 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { MdDelete, MdEdit } from "react-icons/md";
 
 function TableRow(data) {
+  const navigate = useNavigate();
+  const url = `/course/update/?id=${data.data._id}`;
+
   function handleDeleteRes(id) {
     // Delete resource logic here
     console.log("Deleting resource", id);
@@ -21,11 +25,6 @@ function TableRow(data) {
     } else {
       alert("Cancelled, resource not deleted");
     }
-  }
-
-  function handleUpdateRes(id) {
-    // Update resource logic here
-    console.log("Updating resource", id);
   }
 
   return (
@@ -49,10 +48,7 @@ function TableRow(data) {
         >
           <MdDelete />
         </button>
-        <button
-          className="update"
-          onClick={() => handleUpdateRes(data.data._id)}
-        >
+        <button className="update" onClick={() => navigate(url)}>
           <MdEdit />
         </button>
       </td>

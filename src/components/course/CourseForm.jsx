@@ -1,12 +1,48 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 
 function CourseForm() {
+  // States for a new course - create
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [specialties, setSpecialties] = useState([]);
   const [totalHours, setTotalHours] = useState("");
   const [hoursWeekly, setHoursWeekly] = useState("");
+
+  // States for exising course - update
+  const [searchParams] = useSearchParams();
+  const courseToUpdateId = searchParams.get("id");
+  const [isEditing, setIsEditing] = useState("");
+  const [currentCourse, setCurrentCourse] = useState({});
+
+  useEffect(
+    function () {
+      if (courseToUpdateId) {
+        axios({
+          url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
+          method: "PATCH",
+        })
+          .then((res) => {
+            setCurrentCourse(res.data);
+            setIsEditing(true);
+          })
+          .catch((err) => {
+            console.log(err);
+            setIsEditing(false);
+          });
+      } else {
+        setIsEditing(false);
+      }
+    },
+    [courseToUpdateId]
+  );
+
+  const courseName = useRef(null);
+  const courseCode = useRef(null);
+  const courseSpecialties = useRef(null);
+  const courseTotalHours = useRef(null);
+  const courseWeeklyHours = useRef(null);
 
   function handleCreateCourse(e) {
     e.preventDefault();
@@ -28,18 +64,44 @@ function CourseForm() {
       .catch((err) => console.log("Failed to create", err));
   }
 
+  function handleUpdateCourse(e) {
+    e.preventDefault();
+
+    const course = {
+      name: name === "" ? currentCourse.name : name,
+      course_code: code === "" ? currentCourse.course_code : code,
+      specialties:
+        specialties.length === 0
+          ? currentCourse.specialties
+          : [...currentCourse.specialties, ...specialties],
+      total_hours: totalHours === "" ? currentCourse.total_hours : totalHours,
+      hours_weekly:
+        hoursWeekly === "" ? currentCourse.hours_weekly : hoursWeekly,
+    };
+
+    axios({
+      url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
+      method: "PATCH",
+      data: course,
+    })
+      .then((res) => console.log("Successfully updated", res))
+      .catch((err) => console.log("Failed to create", err));
+  }
+
   return (
     <div className="form">
       <form className="course-form" onSubmit={handleCreateCourse}>
-        <h2>Create Course</h2>
+        <h2>Course Form</h2>
         <div className="course-form-input">
           <label htmlFor="name"> Course Name</label>
           <input
             type="text"
             name="name"
             id="name"
+            readOnly={false}
             required={true}
-            value={name}
+            ref={courseName}
+            defaultValue={currentCourse?.name || ""}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -50,7 +112,8 @@ function CourseForm() {
             name="code"
             id="code"
             required={true}
-            value={code}
+            ref={courseCode}
+            defaultValue={currentCourse?.course_code || ""}
             onChange={(e) => setCode(e.target.value)}
           />
         </div>
@@ -61,8 +124,11 @@ function CourseForm() {
             size={1}
             name="specialties"
             required={true}
+            ref={courseSpecialties}
             id="specialties"
-            value={specialties}
+            // value={currentCourse?.specialties || ""}
+            defaultValue={currentCourse?.specialties || []}
+            // defaultChecked={currentCourse?.specialties.map((val) => val) || ""}
             onChange={(e) =>
               setSpecialties((prevSpe) => [...prevSpe, e.target.value])
             }
@@ -78,8 +144,9 @@ function CourseForm() {
             type="number"
             name="total-hours"
             required={true}
+            ref={courseTotalHours}
             id="total-hours"
-            value={totalHours}
+            defaultValue={currentCourse?.total_hours || ""}
             onChange={(e) => setTotalHours(e.target.value)}
           />
         </div>
@@ -89,12 +156,17 @@ function CourseForm() {
             type="number"
             required={true}
             name="weekly-hours"
+            ref={courseWeeklyHours}
             id="weekly-hours"
-            value={hoursWeekly}
+            defaultValue={currentCourse?.hours_weekly || ""}
             onChange={(e) => setHoursWeekly(e.target.value)}
           />
         </div>
-        <button>Create Course</button>
+        {isEditing ? (
+          <button onClick={handleUpdateCourse}>Update Course</button>
+        ) : (
+          <button onClick={handleCreateCourse}>Create Course</button>
+        )}
       </form>
       <div className="form-instruction">
         <h2>Instructions on filling the form</h2>
