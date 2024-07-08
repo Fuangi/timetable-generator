@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function CourseForm() {
+  const navigate = useNavigate();
   // States for a new course - create
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
@@ -44,6 +45,16 @@ function CourseForm() {
   const courseTotalHours = useRef(null);
   const courseWeeklyHours = useRef(null);
 
+  const timeout = () =>
+    setTimeout((type) => {
+      if (type === "success") {
+        alert("The request was completed successfully 👍");
+      } else {
+        alert("Sorry, the request failed, please try again");
+      }
+      navigate("/course");
+    }, 3000);
+
   function handleCreateCourse(e) {
     e.preventDefault();
 
@@ -60,8 +71,12 @@ function CourseForm() {
       method: "POST",
       data: course,
     })
-      .then((res) => console.log("Successful", res))
-      .catch((err) => console.log("Failed to create", err));
+      .then((res) => {
+        timeout("success");
+      })
+      .catch((err) => {
+        timeout("error");
+      });
   }
 
   function handleUpdateCourse(e) {
@@ -84,8 +99,17 @@ function CourseForm() {
       method: "PATCH",
       data: course,
     })
-      .then((res) => console.log("Successfully updated", res))
-      .catch((err) => console.log("Failed to create", err));
+      .then((res) => {
+        if (res.statusText === "ok") {
+          timeout("success");
+        } else {
+          console.log(res.message);
+          timeout("error");
+        }
+      })
+      .catch((err) => {
+        timeout("error");
+      });
   }
 
   return (
