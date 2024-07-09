@@ -2,7 +2,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MdDelete, MdEdit } from "react-icons/md";
 
-function StaffTableRow(data, index) {
+function StaffTableRow(data) {
   const navigate = useNavigate();
   const url = `/staff/update/?id=${data?.data._id}`;
 
@@ -14,8 +14,8 @@ function StaffTableRow(data, index) {
     if (window.confirm("Are you sure you want to delete this resource?")) {
       // deletion logic
       axios({
-        // url: `http://localhost:4000/timetable-ai/staff/${id}`,
-        url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${id}`,
+        url: `http://localhost:4000/timetable-ai/staff/${id}`,
+        // url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${id}`,
         method: "DELETE",
       })
         .then((res) => {
@@ -30,7 +30,7 @@ function StaffTableRow(data, index) {
 
   return (
     <tr>
-      <td>{index + 1}</td>
+      <td>{data.index + 1}</td>
       <td>{data.data.firstname}</td>
       <td>{data.data.lastname}</td>
       <td>{data.data.matricule}</td>

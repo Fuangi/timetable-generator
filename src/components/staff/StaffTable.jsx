@@ -7,8 +7,8 @@ function StaffTable() {
 
   useEffect(function () {
     axios({
-      // url: "http://localhost:4000/timetable-ai/staff",
-      url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff`,
+      url: "http://localhost:4000/timetable-ai/staff",
+      // url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff`,
       method: "GET",
     })
       .then((res) => {

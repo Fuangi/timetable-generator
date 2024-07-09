@@ -46,14 +46,9 @@ function CourseForm() {
   const courseWeeklyHours = useRef(null);
 
   const timeout = () =>
-    setTimeout((type) => {
-      if (type === "success") {
-        alert("The request was completed successfully 👍");
-      } else {
-        alert("Sorry, the request failed, please try again");
-      }
+    setTimeout(() => {
       navigate("/course");
-    }, 3000);
+    }, 2000);
 
   function handleCreateCourse(e) {
     e.preventDefault();
@@ -67,15 +62,17 @@ function CourseForm() {
     };
 
     axios({
-      // url: "http://localhost:4000/timetable-ai/course",
-      url: `https://timetable-generator-backend.onrender.com/timetable-ai/course`,
+      url: "http://localhost:4000/timetable-ai/course",
+      // url: `https://timetable-generator-backend.onrender.com/timetable-ai/course`,
       method: "POST",
       data: course,
     })
       .then((res) => {
-        timeout("success");
+        alert("Request made successfully");
+        timeout();
       })
       .catch((err) => {
+        alert("Failed to make request");
         timeout("error");
       });
   }
@@ -96,15 +93,17 @@ function CourseForm() {
     };
 
     axios({
-      // url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
-      url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${courseToUpdateId}`,
+      url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
+      // url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${courseToUpdateId}`,
       method: "PATCH",
       data: course,
     })
       .then((res) => {
-        timeout("success");
+        alert("Request made successfully");
+        timeout();
       })
       .catch((err) => {
+        alert("Failed to make request");
         timeout("error");
       });
   }
@@ -146,12 +145,10 @@ function CourseForm() {
             required={true}
             ref={courseSpecialties}
             id="specialties"
-            // value={currentCourse?.specialties || ""}
             defaultValue={currentCourse?.specialties || []}
-            // defaultChecked={currentCourse?.specialties.map((val) => val) || ""}
-            onChange={(e) =>
-              setSpecialties((prevSpe) => [...prevSpe, e.target.value])
-            }
+            onChange={(e) => {
+              setSpecialties((prevSpe) => [...prevSpe, e.target.value]);
+            }}
           >
             <option value="GWD">GWD</option>
             <option value="ITS">ITS</option>

@@ -40,12 +40,7 @@ function StaffForm() {
   );
 
   const timeout = () =>
-    setTimeout((type) => {
-      if (type === "success") {
-        alert("The request was completed successfully 👍");
-      } else {
-        alert("Sorry, the request failed, please try again");
-      }
+    setTimeout(() => {
       navigate("/staff");
     }, 2000);
 
@@ -62,15 +57,17 @@ function StaffForm() {
     };
 
     axios({
-      // url: "http://localhost:4000/timetable-ai/staff",
-      url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/`,
+      url: "http://localhost:4000/timetable-ai/staff",
+      // url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/`,
       method: "POST",
       data: staff,
     })
       .then((res) => {
-        timeout("success");
+        alert("Request made successfully");
+        timeout();
       })
       .catch((err) => {
+        alert("Failed to make request");
         timeout("error");
       });
   }
@@ -88,21 +85,17 @@ function StaffForm() {
     };
 
     axios({
-      // url: `http://localhost:4000/timetable-ai/staff/${staffToUpdateId}`,
-      url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${staffToUpdateId}`,
+      url: `http://localhost:4000/timetable-ai/staff/${staffToUpdateId}`,
+      // url: `https://timetable-generator-backend.onrender.com/timetable-ai/staff/${staffToUpdateId}`,
       method: "PATCH",
       data: staff,
     })
       .then((res) => {
-        if (res.status === 200) {
-          timeout("success");
-        } else {
-          console.log(res);
-          timeout("success");
-        }
+        alert("Request made successfully");
+        timeout();
       })
       .catch((err) => {
-        console.log(err);
+        alert("Failed to make request");
         timeout("error");
       });
   }
