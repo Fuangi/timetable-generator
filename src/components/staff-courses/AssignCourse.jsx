@@ -1,71 +1,86 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function AssignCourse() {
   const [courses, setCourses] = useState([]);
-  const [lecturer, setlecturer] = useState("");
+  const [staff, setStaff] = useState("");
+  const [allCourses, setAllCourses] = useState([]);
+  const [allStaffs, setAllStaffs] = useState([]);
+
+  useEffect(function () {
+    axios({
+      url: "http://localhost:4000/timetable-ai/course",
+      method: "GET",
+    }).then((res) => setAllCourses(res.data));
+  }, []);
+
+  useEffect(function () {
+    axios({
+      url: "http://localhost:4000/timetable-ai/staff",
+      method: "GET",
+    }).then((res) => setAllStaffs(res.data));
+  }, []);
 
   function handleAssignCourses(e) {
     e.preventDefault();
     const assign = {
       courses,
-      lecturer,
+      staff,
     };
 
-    console.log(assign);
+    axios({
+      url: "http://localhost:4000/timetable-ai/course_staff",
+      method: "POST",
+      data: assign,
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
   }
   return (
-    <div>
-      <h2>Assign Course(s) to Staff</h2>
-      <div className="assign-course">
-        <div className="assign-info">
-          <h3>Guidelines on assigning courses</h3>
-          <ol>
-            <li>
-              You can assign multiple courses to 1 teacher just by selecting the
-              courses
-            </li>
-          </ol>
+    <div className="form">
+      <form className="course-form">
+        <h2>Assign Course</h2>
+        <div className="course-form-input">
+          <label htmlFor="course">Courses</label>
+          <select
+            id="course"
+            name="course"
+            multiple={true}
+            value={courses}
+            onChange={(e) =>
+              setCourses((prevCourses) => [...prevCourses, e.target.value])
+            }
+          >
+            <option value="">Select Course</option>
+            {allCourses?.length > 0 &&
+              allCourses.map((course, i) => (
+                <option key={i} value={course._id}>
+                  {course.name}
+                </option>
+              ))}
+          </select>
+        </div>
+        <div className="course-form-input">
+          <label htmlFor="course">Lecturer</label>
+          <select
+            id="lecturer"
+            name="lecturer"
+            required={true}
+            value={staff}
+            onChange={(e) => setStaff(e.target.value)}
+          >
+            <option value="">Select Staff</option>
+            {allStaffs?.length > 0 &&
+              allStaffs.map((staff, i) => (
+                <option key={i} value={staff._id}>
+                  {staff.firstname} {staff.lastname}
+                </option>
+              ))}
+          </select>
         </div>
 
-        <form className="assign-form">
-          <h3>Assign Course</h3>
-          <div className="assign-form-input">
-            <label htmlFor="course">Courses</label>
-            <select
-              id="course"
-              name="course"
-              multiple={true}
-              value={courses}
-              onChange={(e) =>
-                setCourses((prevCourses) => [...prevCourses, e.target.value])
-              }
-            >
-              <option value="">Select Course</option>
-              <option value="chem">Chem</option>
-              <option value="bio">Bio</option>
-              <option value="phy">Phy</option>
-              <option value="math">Maths</option>
-            </select>
-          </div>
-          <div className="assign-form-input">
-            <label htmlFor="course">Lecturer</label>
-            <select
-              id="lecturer"
-              name="lecturer"
-              value={lecturer}
-              onChange={(e) => setlecturer(e.target.value)}
-            >
-              <option value="">Select Course</option>
-              <option value="chem">Chem</option>
-              <option value="bio">Bio</option>
-              <option value="phy">Phy</option>
-              <option value="math">Maths</option>
-            </select>
-          </div>
-
-          <button onClick={handleAssignCourses}>Assign Course(s)</button>
-        </form>
-      </div>
+        <button onClick={handleAssignCourses}>Assign Course(s)</button>
+      </form>
     </div>
   );
 }
