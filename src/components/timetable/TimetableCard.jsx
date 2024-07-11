@@ -1,22 +1,18 @@
 import { Link } from "react-router-dom";
 
-function TimetableCard() {
+function TimetableCard({ timetable }) {
   return (
-    <Link className="card-link" to="/timetable/view">
+    <Link className="card-link" to={`/timetable/view?id=${timetable._id}`}>
       <div className="timetable-card">
         <div className="head">
-          <h3>Timetable title</h3>
-          <p>level, specialty</p>
+          <h3>View Timetable</h3>
+          <p>Click here to view</p>
         </div>
-        <div className="body">
-          <p> 🏠 10 courses</p>
-          <p> 🧑‍🏫 8 lecturers</p>
-          <p> ⌛ 5 days</p>
-          <p> ⏲️ 30 hours</p>
-        </div>
-        <div className="progress">
-          <p>weekly progress</p>
-        </div>
+        {/* <div className="body">
+          {timetable.schedule.map((course, index) => (
+            <p key={index}>{course.course.name}</p>
+          ))}
+        </div> */}
       </div>
     </Link>
   );

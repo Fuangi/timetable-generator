@@ -28,6 +28,8 @@ function AssignCourse() {
       staff,
     };
 
+    console.log(assign);
+
     axios({
       url: "http://localhost:4000/timetable-ai/course_staff",
       method: "POST",

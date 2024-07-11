@@ -1,6 +1,9 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import TimetableSlot from "./TimetableSlot";
+import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const localizer = momentLocalizer(moment);
 
@@ -37,12 +40,6 @@ const events = [
       type: "others", //appointment
     },
   },
-  /*   {
-    start: storedValue.eventStart,
-    end: storedValue.eventEnd,
-    title: storedValue.eventName,
-    data: storedValue.data,
-  }, */
 ];
 
 // The component to be rendered
@@ -54,6 +51,35 @@ const component = {
 };
 
 function TimetableView() {
+  const [timeView, setTimeView] = useState({});
+  const [searchParams] = useSearchParams();
+
+  const id = searchParams.get("id");
+
+  const myEvents = [];
+  useEffect(
+    function () {
+      if (id) {
+        axios({
+          url: `http://localhost:4000/timetable-ai/timetable/${id}`,
+          method: "GET",
+        })
+          .then((res) => {
+            setTimeView(res.data.timetable);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+      }
+    },
+    [id]
+  );
+
+  const timetable = timeView.timetable;
+
+  console.log(myEvents);
+
   return (
     <div>
       <div className="timetable-calendar">

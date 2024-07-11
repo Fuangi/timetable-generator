@@ -1,18 +1,27 @@
+import { useEffect, useState } from "react";
 import TimetableCard from "./TimetableCard";
+import axios from "axios";
 
 function AllTimetables() {
+  const [timetables, setTimetables] = useState([]);
+
+  useEffect(function () {
+    axios({
+      url: "http://localhost:4000/timetable-ai/timetable",
+      method: "GET",
+    })
+      .then((res) => setTimetables(res.data.timetables))
+      .catch((err) => console.error(err));
+  }, []);
+
+  console.log(timetables);
   return (
     <div className="all-timetables">
       <h3>All your Timetables...</h3>
       <div className="all-timetables-cards">
-        <TimetableCard />
-        <TimetableCard />
-        <TimetableCard />
-        <TimetableCard />
-        <TimetableCard />
-        <TimetableCard />
-        <TimetableCard />
-        <TimetableCard />
+        {timetables.map((timetable, index) => (
+          <TimetableCard key={index} timetable={timetable} />
+        ))}
       </div>
     </div>
   );

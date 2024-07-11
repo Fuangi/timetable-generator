@@ -25,10 +25,10 @@ function Dashboard() {
             </div>
             <div className="recents">
               <h2>Your Recent Timetables</h2>
-              <div className="recent-timetables">
+              {/* <div className="recent-timetables">
                 <TimetableCard />
                 <TimetableCard />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="right-side">
