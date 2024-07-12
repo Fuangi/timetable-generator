@@ -21,7 +21,8 @@ function CourseForm() {
     function () {
       if (courseToUpdateId) {
         axios({
-          url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
+          url: `https://timetable-generator-backend.onrender.com/timetable-ai/course/${courseToUpdateId}`,
+          // url: `http://localhost:4000/timetable-ai/course/${courseToUpdateId}`,
           method: "PATCH",
         })
           .then((res) => {
