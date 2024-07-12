@@ -7,7 +7,7 @@ function AllTimetables() {
 
   useEffect(function () {
     axios({
-      url: "http://localhost:4000/timetable-ai/timetable",
+      url: "https://timetable-generator-backend.onrender.com/timetable-ai/timetable",
       method: "GET",
     })
       .then((res) => setTimetables(res.data.timetables))
