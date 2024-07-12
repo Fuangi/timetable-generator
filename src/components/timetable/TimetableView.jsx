@@ -1,6 +1,6 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import TimetableSlot from "../utils/TimetableSlot";
+import TimetableSlot from "./TimetableSlot";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
