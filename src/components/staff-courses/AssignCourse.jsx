@@ -9,14 +9,16 @@ function AssignCourse() {
 
   useEffect(function () {
     axios({
-      url: "http://localhost:4000/timetable-ai/course",
+      // url: "http://localhost:4000/timetable-ai/course",
+      url: "https://timetable-generator-backend.onrender.com/timetable-ai/course",
       method: "GET",
     }).then((res) => setAllCourses(res.data));
   }, []);
 
   useEffect(function () {
     axios({
-      url: "http://localhost:4000/timetable-ai/staff",
+      // url: "http://localhost:4000/timetable-ai/staff",
+      url: "https://timetable-generator-backend.onrender.com/timetable-ai/staff",
       method: "GET",
     }).then((res) => setAllStaffs(res.data));
   }, []);
@@ -31,7 +33,8 @@ function AssignCourse() {
     console.log(assign);
 
     axios({
-      url: "http://localhost:4000/timetable-ai/course_staff",
+      // url: "http://localhost:4000/timetable-ai/course_staff",
+      url: "https://timetable-generator-backend.onrender.com/timetable-ai/course_staff",
       method: "POST",
       data: assign,
     })
